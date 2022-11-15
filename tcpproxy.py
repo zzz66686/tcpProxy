@@ -100,12 +100,10 @@ def start_proxy_thread(local_socket):
             break
         
     try:
-        local_socket.shutdown(2)
         local_socket.close()
     except:
         pass
     try:
-        remote_socket.shutdown(2)
         remote_socket.close()
     except:
         pass        
