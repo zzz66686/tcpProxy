@@ -24,29 +24,6 @@ def receive_from(s):
     return b
 
 
-
-
-
-def enable_ssl(remote_socket, local_socket):
-    try:
-        local_socket = ssl.wrap_socket(local_socket,
-                                       server_side=True,
-                                       certfile="mitm.pem",
-                                       keyfile="mitm.pem",
-                                       ssl_version=ssl.PROTOCOL_TLS,
-                                       )
-    except ssl.SSLError as e:
-        raise
-
-    try:
-        remote_socket = ssl.wrap_socket(remote_socket)
-    except ssl.SSLError as e:
-        raise
-
-    return [remote_socket, local_socket]
-
-
-
 def printHex(s):
     #print(s)
     h = ''
@@ -109,8 +86,6 @@ def start_proxy_thread(local_socket):
         pass        
         
         
-            
-            
 
 def main():
     listen_ip = '0.0.0.0'
